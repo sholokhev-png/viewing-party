@@ -66,7 +66,7 @@ def get_most_watched_genre(user_data):
 
     most_watched_genre = None
     highest_count = 0
-    
+
 # loop through the genre_count dictionary and find the genre with the highest count
     for genre, count in genre_count.items():
 # check if the count is higher than the highest_count, if it is, set the most_watched_genre to the current genre and set the highest_count to the current count
@@ -115,7 +115,17 @@ def get_friends_unique_watched(user_data):
 
 # -----------------------------------------
 # ------------- WAVE 4 --------------------
-# -----------------------------------------
+def get_available_recs(user_data):
+
+    # create a empty list to hold available recommendations
+    available_recs = []
+    friend_recs = get_friends_unique_watched(user_data)
+
+    #  check movie is in user's subscriptions and add to avaliable if yes
+    for movie in friend_recs:
+        if movie["host"] in user_data["subscriptions"]:
+            available_recs.append(movie)    
+    return available_recs
 
 
 # ------------- WAVE 5 --------------------
